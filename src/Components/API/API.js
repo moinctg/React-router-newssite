@@ -7,12 +7,12 @@ import React, { useEffect, useState } from 'react';
 
 const API = () => {
 
-    const [news,setNews] = useState([])
+    const [news,setNews] = useState([]);
 
     useEffect( ()=>{
-        fetch('https://newsapi.org/v2/everything?q=tesla&from=2021-08-28&sortBy=publishedAt&apiKey=2f6c5a823ad04c6c908baf3bdd6f9e0e')
+        fetch('https://jsonplaceholder.typicode.com/users')
         .then(res=>res.json())
-        .then(data=>setNews(data.articles))
+        .then(data=>setNews(data))
     }
         ,[])
     return (
@@ -22,7 +22,9 @@ const API = () => {
             <Row xs={1} md={3} className="g-4">
                
                 {
-                    news.map(nu =><News news={ nu }></News>)
+                    news.map(nu =><News 
+                        // key={nu.id}
+                        news={ nu }></News>)
                 }
 
                        </Row>
